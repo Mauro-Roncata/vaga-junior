@@ -1,0 +1,37 @@
+# --- Maven (Compilação e Pacotes) ---
+target/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# --- Logs e Arquivos Temporários ---
+*.log
+logs/
+temp/
+
+# --- IDE: VS Code ---
+.vscode/
+*.code-workspace
+
+# --- IDE: IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# --- IDE: Eclipse 
+.classpath
+.project
+.settings/
+bin/
+
+# --- Arquivos de Sistema Operacional ---
+.DS_Store
+Thumbs.db
+
+# --- Segredos e Variáveis de Ambiente ---
+.env

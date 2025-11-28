@@ -25,7 +25,6 @@ public class BombaController {
         return repository.save(bomba);
     }
     
-    // Pode adicionar o PUT e DELETE depois como exercício!
     @PutMapping("/{id}") 
     public Bomba atualizar(@PathVariable Integer id, @RequestBody Bomba bomba){
         bomba.setId(id);;

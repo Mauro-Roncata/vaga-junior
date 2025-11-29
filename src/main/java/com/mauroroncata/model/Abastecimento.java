@@ -3,6 +3,8 @@ package com.mauroroncata.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Abastecimento {
 
@@ -10,9 +12,10 @@ public class Abastecimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataHora; // Data exata do abastecimento
-    private Double valorTotal;      // Quanto o cliente pagou (R$)
-    private Double litros;          // Quanto entrou no tanque (Calculado)
+    private Double valorTotal;      // Quanto o cliente pagou 
+    private Double litros;          // Quanto entrou no tanque 
 
     @ManyToOne // Vários abastecimentos acontecem em uma Bomba
     @JoinColumn(name = "bomba_id")

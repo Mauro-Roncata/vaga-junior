@@ -15,7 +15,7 @@ public class Combustivel {
     private String nome; 
     private Double precoPorLitro;
 
-    // --- Construtores, Getters e Setters ---
+    // Getters e Setters 
 
     public int getId() {
         return id;

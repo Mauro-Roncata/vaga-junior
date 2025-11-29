@@ -12,7 +12,7 @@ public class Bomba {
     private String nome; 
 
     @ManyToOne // Várias bombas -> Um Combustível
-    @JoinColumn(name = "combustivel_id") // Cria a coluna 'combustivel_id' no banco (Chave Estrangeira)
+    @JoinColumn(name = "combustivel_id") // Cria a coluna 'combustivel_id' no banco (chave estrangeira)
     private Combustivel combustivel;
 
     // Getters e Setters

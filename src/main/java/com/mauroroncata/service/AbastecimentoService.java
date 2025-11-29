@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@Service // Diz ao Spring: "Aqui tem regras de negócio"
+@Service // Indica regra de negócio
 public class AbastecimentoService {
 
     @Autowired
@@ -25,7 +25,7 @@ public class AbastecimentoService {
         // Descobre o preço do combustível daquela bomba
         Double preco = bomba.getCombustivel().getPrecoPorLitro();
 
-        // Calcula os litros (Regra de Negócio)
+        // Calcula os litros 
         Double litros = valorTotal / preco;
 
         // Monta o objeto Abastecimento para salvar
@@ -37,5 +37,31 @@ public class AbastecimentoService {
 
         // Salva no banco
         return abastecimentoRepository.save(novoAbastecimento);
+
+    }
+
+    // Recalcula os litros se mudar o valor
+    public Abastecimento atualizar(Integer id, Double novoValorTotal) {
+        // Busca o abastecimento antigo
+        Abastecimento abastecimento = abastecimentoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Abastecimento não encontrado"));
+
+        //  Descobre o preço da bomba que foi usada
+        Double preco = abastecimento.getBomba().getCombustivel().getPrecoPorLitro();
+
+        //  Recalcula os litros com o novo valor
+        Double litros = novoValorTotal / preco;
+
+        // Atualiza os dados no objeto
+        abastecimento.setValorTotal(novoValorTotal);
+        abastecimento.setLitros(litros);
+
+        // Salva as alterações
+        return abastecimentoRepository.save(abastecimento);
+    }
+
+    // Método para deletar
+    public void deletar(Integer id) {
+        abastecimentoRepository.deleteById(id);
     }
 }
